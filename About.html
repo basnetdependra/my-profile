@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dependra</title>
+
+
+  <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon" />
+
+  
+  <link rel="stylesheet" href="./assets/css/style.css" />
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+
+    .back-button:hover {
+      transform: scale(1.1);
+    }
+
+   
+    .bg-lightgrey {
+      background-color: #fbf8f8;
+    }
+
+    .edu-exp {
+      padding: 10px 0px;
+      width: 48%;
+      margin: 1%;
+      float: left;
+      padding-left: 10px;
+    }
+
+    .experience-list {
+      width: 100%;
+      float: left;
+      padding: 30px 10px;
+      background: #f9f9f9;
+      margin-bottom: 20px;
+    }
+
+    .experience-content {
+      width: 100%;
+      float: left;
+      margin-left: 10px;
+    }
+
+    .experience-content h2 {
+      font-weight: 600;
+      margin-bottom: 5px;
+      font-size: 20px;
+    }
+
+    .experience-content h3 {
+      color: #ffbf35;
+      font-weight: 500;
+      margin-bottom: 2px;
+      font-size: 17px;
+    }
+
+    .experience-content p {
+      font-size: 15px;
+    }
+
+    
+    .skill {
+      margin-top: 30px;
+      font-size: 17px;
+    }
+
+    .skill span {
+      float: right;
+    }
+
+    .skill div {
+      width: 100%;
+      float: left;
+      margin-top: 5px;
+      background: #e7e7e7;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: width 0.5s ease;
+    }
+
+    .skill div span {
+      background: #ffbf35;
+      height: 5px;
+      float: left;
+    }
+
+    div[role="progressbar"] {
+      color: #ffbf35;
+      margin-left: 100px;
+      margin-bottom: 20px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      place-items: center;
+      display: grid;
+      --pgPercentage: var(--value);
+      background: radial-gradient(closest-side, black 80%, transparent 0 99.9%, black 0),
+        conic-gradient(#ffbf35 calc(var(--pgPercentage) * 1%), #ffe6af 0);
+    }
+
+    
+    #personal-details {
+  padding: 30px 0;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#personal-details:hover {
+  background-color: #e0e0e0;
+}
+
+#personal-details h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#personal-details .details {
+  font-size: 16px;
+  line-height: 1.6;
+}
+/* Section styling */
+.section {
+  padding: 50px 0;
+}
+
+/* Container styling */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Section subtitle styling */
+.section-subtitle {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Section title styling */
+.h2.section-title {
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Section text styling */
+.section-text {
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+/* Portfolio list styling */
+.portfolio-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Portfolio card styling */
+.portfolio-card {
+  width: 320px;
+  height: 360px;
+  margin: 20px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.portfolio-card:hover {
+  transform: scale(1.05);
+}
+
+/* Card content styling */
+.card-content {
+  position: relative;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  color: #fff;
+}
+
+/* Card subtitle styling */
+.card-subtitle {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* Card title styling */
+.h3.card-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* Button link styling */
+.btn-link {
+  display: inline-block;
+  padding: 10px 15px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-link:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.btn-link span {
+  margin-right: 5px;
+}
+
+.portfolio-list {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portfolio-list::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/images/your_background_image.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: blur(5px); /* Add a blur effect to the background */
+      transform: scale(1.2); /* Adjust the scaling for a parallax effect */
+    }
+
+    .portfolio-list li {
+      position: relative;
+      z-index: 1; /* Ensure the videos are above the background */
+    }
+
+    .portfolio-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .card-content {
+      /* Update the card content styles as needed */
+      position: relative;
+      z-index: 2; /* Ensure the card content is above the background */
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+    }
+
+
+  </style>
+
+</head>
+
+<body class="light-theme">
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="#">
+          <img src="./assets/images/favicon.png" alt="Dep1" width="150" class="logo-light" />
+          <img src="./assets/images/favicon.png" alt="Dep1" width="150" class="logo-dark" />
+        </a>
+
+        <div class="btn-group">
+          <button class="theme-btn theme-btn-mobile light">
+            <ion-icon name="moon" class="moon"></ion-icon>
+            <ion-icon name="sunny" class="sun"></ion-icon>
+          </button>
+
+          <button class="nav-menu-btn">
+            <ion-icon name="menu-outline"></ion-icon>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="container">
+        <div class="left">
+          <h1 class="h1">
+            Hi, I'm <b>Dependra&nbsp;Basnet</b>. <br />Software Developer
+          </h1>
+
+          <p class="h3">
+            Specialized in Apps Development
+          </p>
+        </div>
+
+        <div class="right">
+          <div class="pattern-bg"></div>
+          <div class="img-box">
+            <img src="./assets/images/author.png" alt="Dependra" class="hero-img" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="about-me">
+      <div class="container">
+        <h2>About Me</h2>
+        <section id="personal-details">
+          <div class="container">
+            <h2>Personal Details</h2>
+            <div class="details">
+              <p><strong>Name:</strong> Dependra Basnet</p>
+              <p><strong>Address:</strong> Thimphu,Bhutan</p>
+              <p><strong>Contact Number:</strong>+97517888196</p>
+              <p><strong>Email:</strong>dependrabas@gmail.com</p>
+             
+            </div>
+          </div>
+        </section>
+        <div class="main-section bg-lightgrey">
+          <div class="container">
+            <div class="edu-exp">
+              <h2 class="heading-text">Education</h2>
+              <div class="experience-list">
+                <div class="experience-content">
+                  <h2>Chitkara University </h2>
+                  <h3>2022-2025</h3>
+                  <p>Bachelor of Computer Application</p>
+                </div>
+              </div>
+              <div class="experience-list">
+                <div class="experience-content">
+                  <h2>Gedu High School</h2>
+                  <h3>2021-2021</h3>
+                  <p>Business Studies</p>
+                </div>
+              </div>
+              <div class="experience-list">
+                <div class="experience-content">
+                  <h2>Pakshikha Central School</h2>
+                  <h3>2020-2020</h3>
+                  <p>Business Studies</p>
+                </div>
+              </div>
+              <div class="experience-list">
+                <div class="experience-content">
+                  <h2>Darla Middle Secondary School</h2>
+                  <h3>2009-2019</h3>
+                  <p>Middle School Education</p>
+                </div>
+              </div>
+            </div>
+            <div class="edu-exp">
+              <h2 class="heading-text">Experience</h2>
+              <div class="experience-list">
+                <div class="experience-content">
+                  <h2>Algoartisans</h2>
+                  <h3>Co-Founder</h3>
+                  <p>I am the co-founder of the programming group Algoartisans</p>
+                </div>
+              </div>
+              <div class="experience-list">
+                <div class="experience-content">
+                  <h2>Intern at Weblaya</h2>
+                  <h3>2022-2023</h3>
+                  <p>I worked as an Intern at Weblaya, which is a platform for website hosting.</p>
+                </div>
+              </div>
+              <div class="experience-list">
+                <div class="experience-content">
+                  <h2>Data Analytic Intern </h2>
+                  <h3>10-25</h3>
+                  <p>In this internship, I learned the basics of data analytics.</p>
+                </div>
+              </div>
+              <div class="experience-list">
+                <div class="experience-content">
+                  <h2>Campus Ambassador for Acmegrade</h2>
+                  <h3>2023-2024</h3>
+                  <p>Currently serving as a university campus Ambassador for Acmegrade.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   
+
+    <div class="main-section">
+      <div class="container">
+        <h2 class="heading-text">My Skills</h2>
+        <div class="width-50">
+          <div class="skill">
+            <b>HTML</b>
+            <span>95%</span>
+            <div>
+              <span style="width:95%"></span>
+            </div>
+          </div>
+          <div class="skill">
+            <b>CSS</b>
+            <span>91%</span>
+            <div>
+              <span style="width:91%"></span>
+            </div>
+          </div>
+          <div class="skill">
+            <b>JavaScript</b>
+            <span>85%</span>
+            <div>
+              <span style="width:85%"></span>
+            </div>
+          </div>
+          <div class="skill">
+            <b>React js</b>
+            <span>79%</span>
+            <div>
+              <span style="width:79%"></span>
+            </div>
+          </div>
+          <div class="skill">
+            <b>C++ Programming</b>
+            <span>80%</span>
+            <div>
+              <span style="width:80%"></span>
+            </div>
+          </div>
+          <div class="skill">
+            <b>MySQL</b>
+            <span>75%</span>
+            <div>
+              <span style="width:75%"></span>
+            </div>
+          </div>
+          <div class="skill">
+            <b>Python</b>
+            <span>88%</span>
+            <div>
+              <span style="width:88%"></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <section class="section portfolio" id="portfolio">
+      <div class="container">
+  
+        <p class="section-subtitle">Portfolio</p>
+  
+        <h2 class="h2 section-title">My Works</h2>
+  
+        <p class="section-text">
+          Dliquip ex ea commo do conse namber onequa ute irure dolor in reprehen derit in voluptate
+        </p>
+  
+        <ul class="portfolio-list">
+  
+          <li>
+            <video controls class="portfolio-video">
+              <source src="assets/viddeos/Artificial intelligence Intro Template.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="card-content">
+  
+              <p class="card-subtitle">Artificial Intelligence</p>
+  
+              <h3 class="h3 card-title">Web Application for Desiverse</h3>
+  
+              <!-- <span class="btn-link">
+                <span>View Project</span>
+                <ion-icon name="arrow-forward"></ion-icon>
+              </span> -->
+  
+            </div>
+          </li>
+  
+          <li>
+            <video controls class="portfolio-video">
+              <source src="assets/viddeos/Artificial intelligence Intro Template.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="card-content">
+  
+              <p class="card-subtitle">Web 3</p>
+  
+              <h3 class="h3 card-title">Web Application for Desiverse</h3>
+  
+              <!-- <span class="btn-link">
+                <span>View Project</span>
+                <ion-icon name="arrow-forward"></ion-icon>
+              </span> -->
+  
+            </div>
+          </li>
+  
+        </ul>
+  
+      </div>
+    </section>
+      <p class="copyright"><a href="#"></a></p>
+      <footer>
+        <div class="container">
+          <div class="wrapper">
+            <a href="#" class="footer-logo">
+              <img src="./assets/images/favicon.png" alt="Logo" width="150" class="logo-light" />
+              <img src="./assets/images/favicon.png" alt="Logo" width="150" class="logo-dark" />
+            </a>
+    
+            <p class="footer-text">
+              Information provided here all are all true
+            </p>
+          </div>
+    
+          <div class="wrapper">
+            <p class="footer-title">Support</p>
+    
+            <ul>
+              <li>
+                <a href="#" class="footer-link">Edu-Bhutan ECPF</a>
+              </li>
+    
+              <li>
+                <a href="#" class="footer-link">Odiyana Ventures</a>
+              </li>
+    
+              <li>
+                <a href="#" class="footer-link">Bhutan Info</a>
+              </li>
+            </ul>
+          </div>
+    
+          <div class="wrapper">
+            <p class="footer-title">Collaburations</p>
+    
+            <ul>
+              <li>
+                <a href="#" class="footer-link">Entrepreneurs of Chukha</a>
+              </li>
+    
+              <li>
+                <a href="#" class="footer-link">Weblaya</a>
+              </li>
+    
+              <li>
+                <a href="#" class="footer-link">TechBas</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    
+    </footer>
+
+    <a href="index.html" class="back-button">
+      <ion-icon name="arrow-back"></ion-icon> Back
+    </a>
+
+    <script src="./assets/js/script.js"></script>
+  </main>
+  
+
+</body>
+
+</html>
